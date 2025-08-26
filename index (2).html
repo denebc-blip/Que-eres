@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Qué Barbie eres?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            color: #333;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d63384;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Qué Barbie eres?</h1>
+
+    <div class="question">
+        <p>1. ¿Qué te gusta más?</p>
+        <input type="radio" name="q1" value="moda"> La moda<br>
+        <input type="radio" name="q1" value="aventura"> La aventura<br>
+        <input type="radio" name="q1" value="ciencia"> La ciencia<br>
+    </div>
+
+    <div class="question">
+        <p>2. ¿Qué color prefieres?</p>
+        <input type="radio" name="q2" value="rosa"> Rosa<br>
+        <input type="radio" name="q2" value="azul"> Azul<br>
+        <input type="radio" name="q2" value="morado"> Morado<br>
+    </div>
+
+    <div class="question">
+        <p>3. ¿Qué profesión te gustaría tener?</p>
+        <input type="radio" name="q3" value="diseñadora"> Diseñadora<br>
+        <input type="radio" name="q3" value="exploradora"> Exploradora<br>
+        <input type="radio" name="q3" value="científica"> Científica<br>
+    </div>
+
+    <button onclick="mostrarResultado()">Ver qué Barbie soy</button>
+
+    <div id="result"></div>
+
+    <script>
+        function mostrarResultado() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+
+            if (!q1 || !q2 || !q3) {
+                document.getElementById('result').innerText = "Por favor responde todas las preguntas.";
+                return;
+            }
+
+            const estilo = q1.value;
+            const color = q2.value;
+            const profesion = q3.value;
+
+            let resultado = "";
+
+            if (estilo === "moda" && color === "rosa" && profesion === "diseñadora") {
+                resultado = "¡Eres Barbie Fashionista! 💄👠✨";
+            } else if (estilo === "aventura" && color === "azul" && profesion === "exploradora") {
+                resultado = "¡Eres Barbie Aventurera! 🏔️🧭🌲";
+            } else if (estilo === "ciencia" && color === "morado" && profesion === "científica") {
+                resultado = "¡Eres Barbie Científica! 🔬🧪📚";
+            } else {
+                resultado = "¡Eres una Barbie única y especial! 🌟";
+            }
+
+            document.getElementById('result').innerText = resultado;
+        }
+    </script>
+
+</body>
+</html>
